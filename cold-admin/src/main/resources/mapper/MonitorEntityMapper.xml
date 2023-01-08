@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.datamacy.coldadmin.dao.MonitorEntityMapper">
+  <resultMap id="BaseResultMap" type="com.datamacy.common.admin.entity.MonitorEntity">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="userName" jdbcType="VARCHAR" property="userName" />
+    <result column="userPhone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="monitorState" jdbcType="VARCHAR" property="monitorState" />
+    <result column="hostId" jdbcType="VARCHAR" property="hostId" />
+    <result column="hostCode" jdbcType="VARCHAR" property="hostCode" />
+    <result column="hostName" jdbcType="INTEGER" property="hostName" />
+    <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userName, userPhone, monitorState, hostId, hostCode, hostName, createdTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cz_monitor
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from cz_monitor
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.datamacy.common.admin.entity.MonitorEntity">
+    insert into cz_monitor (id, userName, userPhone, 
+      monitorState, hostId, hostCode, 
+      hostName, createdTime, updateTime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
+      #{monitorState,jdbcType=VARCHAR}, #{hostId,jdbcType=VARCHAR}, #{hostCode,jdbcType=VARCHAR}, 
+      #{hostName,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.datamacy.common.admin.entity.MonitorEntity">
+    insert into cz_monitor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        userName,
+      </if>
+      <if test="userPhone != null">
+        userPhone,
+      </if>
+      <if test="monitorState != null">
+        monitorState,
+      </if>
+      <if test="hostId != null">
+        hostId,
+      </if>
+      <if test="hostCode != null">
+        hostCode,
+      </if>
+      <if test="hostName != null">
+        hostName,
+      </if>
+      <if test="createdTime != null">
+        createdTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorState != null">
+        #{monitorState,jdbcType=VARCHAR},
+      </if>
+      <if test="hostId != null">
+        #{hostId,jdbcType=VARCHAR},
+      </if>
+      <if test="hostCode != null">
+        #{hostCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        #{hostName,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.datamacy.common.admin.entity.MonitorEntity">
+    update cz_monitor
+    <set>
+      <if test="userName != null">
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        userPhone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorState != null">
+        monitorState = #{monitorState,jdbcType=VARCHAR},
+      </if>
+      <if test="hostId != null">
+        hostId = #{hostId,jdbcType=VARCHAR},
+      </if>
+      <if test="hostCode != null">
+        hostCode = #{hostCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        hostName = #{hostName,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null">
+        createdTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.datamacy.common.admin.entity.MonitorEntity">
+    update cz_monitor
+    set userName = #{userName,jdbcType=VARCHAR},
+      userPhone = #{userPhone,jdbcType=VARCHAR},
+      monitorState = #{monitorState,jdbcType=VARCHAR},
+      hostId = #{hostId,jdbcType=VARCHAR},
+      hostCode = #{hostCode,jdbcType=VARCHAR},
+      hostName = #{hostName,jdbcType=INTEGER},
+      createdTime = #{createdTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

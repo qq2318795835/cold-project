@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.datamacy.coldadmin.dao.WarehouseEntityMapper">
+  <resultMap id="BaseResultMap" type="com.datamacy.common.admin.entity.WarehouseEntity">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="houseCode" jdbcType="VARCHAR" property="houseCode" />
+    <result column="houseName" jdbcType="VARCHAR" property="houseName" />
+    <result column="houseAddress" jdbcType="VARCHAR" property="houseAddress" />
+    <result column="houseType" jdbcType="INTEGER" property="houseType" />
+    <result column="companyId" jdbcType="VARCHAR" property="companyId" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyName" />
+    <result column="principalName" jdbcType="VARCHAR" property="principalName" />
+    <result column="principalTel" jdbcType="VARCHAR" property="principalTel" />
+    <result column="longitude" jdbcType="DECIMAL" property="longitude" />
+    <result column="latitude" jdbcType="DECIMAL" property="latitude" />
+    <result column="areaSize" jdbcType="DOUBLE" property="areaSize" />
+    <result column="houseStatus" jdbcType="INTEGER" property="houseStatus" />
+    <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, houseCode, houseName, houseAddress, houseType, companyId, companyName, principalName, 
+    principalTel, longitude, latitude, areaSize, houseStatus, createdTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cz_warehouse
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from cz_warehouse
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.datamacy.common.admin.entity.WarehouseEntity">
+    insert into cz_warehouse (id, houseCode, houseName, 
+      houseAddress, houseType, companyId, 
+      companyName, principalName, principalTel, 
+      longitude, latitude, areaSize, 
+      houseStatus, createdTime, updateTime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{houseCode,jdbcType=VARCHAR}, #{houseName,jdbcType=VARCHAR}, 
+      #{houseAddress,jdbcType=VARCHAR}, #{houseType,jdbcType=INTEGER  }, #{companyId,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{principalName,jdbcType=VARCHAR}, #{principalTel,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=DECIMAL}, #{latitude,jdbcType=DECIMAL}, #{areaSize,jdbcType=DOUBLE}, 
+      #{houseStatus,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.datamacy.common.admin.entity.WarehouseEntity">
+    insert into cz_warehouse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="houseCode != null">
+        houseCode,
+      </if>
+      <if test="houseName != null">
+        houseName,
+      </if>
+      <if test="houseAddress != null">
+        houseAddress,
+      </if>
+      <if test="houseType != null">
+        houseType,
+      </if>
+      <if test="companyId != null">
+        companyId,
+      </if>
+      <if test="companyName != null">
+        companyName,
+      </if>
+      <if test="principalName != null">
+        principalName,
+      </if>
+      <if test="principalTel != null">
+        principalTel,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="areaSize != null">
+        areaSize,
+      </if>
+      <if test="houseStatus != null">
+        houseStatus,
+      </if>
+      <if test="createdTime != null">
+        createdTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="houseCode != null">
+        #{houseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="houseName != null">
+        #{houseName,jdbcType=VARCHAR},
+      </if>
+      <if test="houseAddress != null">
+        #{houseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        #{houseType,jdbcType=INTEGER  },
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="principalName != null">
+        #{principalName,jdbcType=VARCHAR},
+      </if>
+      <if test="principalTel != null">
+        #{principalTel,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="areaSize != null">
+        #{areaSize,jdbcType=DOUBLE},
+      </if>
+      <if test="houseStatus != null">
+        #{houseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.datamacy.common.admin.entity.WarehouseEntity">
+    update cz_warehouse
+    <set>
+      <if test="houseCode != null">
+        houseCode = #{houseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="houseName != null">
+        houseName = #{houseName,jdbcType=VARCHAR},
+      </if>
+      <if test="houseAddress != null">
+        houseAddress = #{houseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        houseType = #{houseType,jdbcType=INTEGER  },
+      </if>
+      <if test="companyId != null">
+        companyId = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        companyName = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="principalName != null">
+        principalName = #{principalName,jdbcType=VARCHAR},
+      </if>
+      <if test="principalTel != null">
+        principalTel = #{principalTel,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="areaSize != null">
+        areaSize = #{areaSize,jdbcType=DOUBLE},
+      </if>
+      <if test="houseStatus != null">
+        houseStatus = #{houseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null">
+        createdTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.datamacy.common.admin.entity.WarehouseEntity">
+    update cz_warehouse
+    set houseCode = #{houseCode,jdbcType=VARCHAR},
+      houseName = #{houseName,jdbcType=VARCHAR},
+      houseAddress = #{houseAddress,jdbcType=VARCHAR},
+      houseType = #{houseType,jdbcType=INTEGER  },
+      companyId = #{companyId,jdbcType=VARCHAR},
+      companyName = #{companyName,jdbcType=VARCHAR},
+      principalName = #{principalName,jdbcType=VARCHAR},
+      principalTel = #{principalTel,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DECIMAL},
+      latitude = #{latitude,jdbcType=DECIMAL},
+      areaSize = #{areaSize,jdbcType=DOUBLE},
+      houseStatus = #{houseStatus,jdbcType=INTEGER},
+      createdTime = #{createdTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

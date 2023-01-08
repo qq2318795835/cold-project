@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.datamacy.coldadmin.dao.CompanyEntityMapper">
+  <resultMap id="BaseResultMap" type="com.datamacy.common.admin.entity.CompanyEntity">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="abbreviation" jdbcType="VARCHAR" property="abbreviation" />
+    <result column="companyNumber" jdbcType="VARCHAR" property="companyNumber" />
+    <result column="companyAddress" jdbcType="VARCHAR" property="companyAddress" />
+    <result column="companyPhone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="managementName" jdbcType="VARCHAR" property="managementName" />
+    <result column="managementPhone" jdbcType="VARCHAR" property="managementPhone" />
+    <result column="leader" jdbcType="VARCHAR" property="leader" />
+    <result column="leaderPhone" jdbcType="VARCHAR" property="leaderPhone" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="webAddress" jdbcType="VARCHAR" property="webAddress" />
+    <result column="companyType" jdbcType="VARCHAR" property="companyType" />
+    <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company, abbreviation, companyNumber, companyAddress, companyPhone, managementName, 
+    managementPhone, leader, leaderPhone, message, webAddress, companyType, createdTime, 
+    updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cz_company
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from cz_company
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.datamacy.common.admin.entity.CompanyEntity">
+    insert into cz_company (id, company, abbreviation, 
+      companyNumber, companyAddress, companyPhone, 
+      managementName, managementPhone, leader, 
+      leaderPhone, message, webAddress, 
+      companyType, createdTime, updateTime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{abbreviation,jdbcType=VARCHAR}, 
+      #{companyNumber,jdbcType=VARCHAR}, #{companyAddress,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, 
+      #{managementName,jdbcType=VARCHAR}, #{managementPhone,jdbcType=VARCHAR}, #{leader,jdbcType=VARCHAR}, 
+      #{leaderPhone,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{webAddress,jdbcType=VARCHAR}, 
+      #{companyType,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.datamacy.common.admin.entity.CompanyEntity">
+    insert into cz_company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="abbreviation != null">
+        abbreviation,
+      </if>
+      <if test="companyNumber != null">
+        companyNumber,
+      </if>
+      <if test="companyAddress != null">
+        companyAddress,
+      </if>
+      <if test="companyPhone != null">
+        companyPhone,
+      </if>
+      <if test="managementName != null">
+        managementName,
+      </if>
+      <if test="managementPhone != null">
+        managementPhone,
+      </if>
+      <if test="leader != null">
+        leader,
+      </if>
+      <if test="leaderPhone != null">
+        leaderPhone,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+      <if test="webAddress != null">
+        webAddress,
+      </if>
+      <if test="companyType != null">
+        companyType,
+      </if>
+      <if test="createdTime != null">
+        createdTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="abbreviation != null">
+        #{abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="companyNumber != null">
+        #{companyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="managementName != null">
+        #{managementName,jdbcType=VARCHAR},
+      </if>
+      <if test="managementPhone != null">
+        #{managementPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null">
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderPhone != null">
+        #{leaderPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="webAddress != null">
+        #{webAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null">
+        #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.datamacy.common.admin.entity.CompanyEntity">
+    update cz_company
+    <set>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="abbreviation != null">
+        abbreviation = #{abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="companyNumber != null">
+        companyNumber = #{companyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        companyAddress = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        companyPhone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="managementName != null">
+        managementName = #{managementName,jdbcType=VARCHAR},
+      </if>
+      <if test="managementPhone != null">
+        managementPhone = #{managementPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null">
+        leader = #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderPhone != null">
+        leaderPhone = #{leaderPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="webAddress != null">
+        webAddress = #{webAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null">
+        companyType = #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        createdTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.datamacy.common.admin.entity.CompanyEntity">
+    update cz_company
+    set company = #{company,jdbcType=VARCHAR},
+      abbreviation = #{abbreviation,jdbcType=VARCHAR},
+      companyNumber = #{companyNumber,jdbcType=VARCHAR},
+      companyAddress = #{companyAddress,jdbcType=VARCHAR},
+      companyPhone = #{companyPhone,jdbcType=VARCHAR},
+      managementName = #{managementName,jdbcType=VARCHAR},
+      managementPhone = #{managementPhone,jdbcType=VARCHAR},
+      leader = #{leader,jdbcType=VARCHAR},
+      leaderPhone = #{leaderPhone,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      webAddress = #{webAddress,jdbcType=VARCHAR},
+      companyType = #{companyType,jdbcType=VARCHAR},
+      createdTime = #{createdTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectForPage" parameterType="java.lang.String" resultType ="com.datamacy.common.admin.entity.CompanyEntity">
+    select
+    <include refid="Base_Column_List" />
+    from cz_company
+    limit ${start},${pageSize}
+  </select>
+
+</mapper>

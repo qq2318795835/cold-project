@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.datamacy.coldadmin.dao.HostEntityMapper">
+  <resultMap id="BaseResultMap" type="com.datamacy.common.admin.entity.HostEntity">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="hostCode" jdbcType="VARCHAR" property="hostCode" />
+    <result column="hostName" jdbcType="VARCHAR" property="hostName" />
+    <result column="houseId" jdbcType="VARCHAR" property="houseId" />
+    <result column="houseCode" jdbcType="VARCHAR" property="houseCode" />
+    <result column="houseName" jdbcType="VARCHAR" property="houseName" />
+    <result column="hostStatus" jdbcType="INTEGER" property="hostStatus" />
+    <result column="hostModel" jdbcType="VARCHAR" property="hostModel" />
+    <result column="simCode" jdbcType="VARCHAR" property="simCode" />
+    <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, hostCode, hostName, houseId, houseCode, houseName, hostStatus, hostModel, simCode, 
+    createdTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cz_host
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from cz_host
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.datamacy.common.admin.entity.HostEntity">
+    insert into cz_host (id, hostCode, hostName, 
+      houseId, houseCode, houseName, 
+      hostStatus, hostModel, simCode, 
+      createdTime, updateTime)
+    values (#{id,jdbcType=VARCHAR}, #{hostCode,jdbcType=VARCHAR}, #{hostName,jdbcType=VARCHAR}, 
+      #{houseId,jdbcType=VARCHAR}, #{houseCode,jdbcType=VARCHAR}, #{houseName,jdbcType=VARCHAR}, 
+      #{hostStatus,jdbcType=INTEGER}, #{hostModel,jdbcType=VARCHAR}, #{simCode,jdbcType=VARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.datamacy.common.admin.entity.HostEntity">
+    insert into cz_host
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="hostCode != null">
+        hostCode,
+      </if>
+      <if test="hostName != null">
+        hostName,
+      </if>
+      <if test="houseId != null">
+        houseId,
+      </if>
+      <if test="houseCode != null">
+        houseCode,
+      </if>
+      <if test="houseName != null">
+        houseName,
+      </if>
+      <if test="hostStatus != null">
+        hostStatus,
+      </if>
+      <if test="hostModel != null">
+        hostModel,
+      </if>
+      <if test="simCode != null">
+        simCode,
+      </if>
+      <if test="createdTime != null">
+        createdTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="hostCode != null">
+        #{hostCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        #{hostName,jdbcType=VARCHAR},
+      </if>
+      <if test="houseId != null">
+        #{houseId,jdbcType=VARCHAR},
+      </if>
+      <if test="houseCode != null">
+        #{houseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="houseName != null">
+        #{houseName,jdbcType=VARCHAR},
+      </if>
+      <if test="hostStatus != null">
+        #{hostStatus,jdbcType=INTEGER},
+      </if>
+      <if test="hostModel != null">
+        #{hostModel,jdbcType=VARCHAR},
+      </if>
+      <if test="simCode != null">
+        #{simCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.datamacy.common.admin.entity.HostEntity">
+    update cz_host
+    <set>
+      <if test="hostCode != null">
+        hostCode = #{hostCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        hostName = #{hostName,jdbcType=VARCHAR},
+      </if>
+      <if test="houseId != null">
+        houseId = #{houseId,jdbcType=VARCHAR},
+      </if>
+      <if test="houseCode != null">
+        houseCode = #{houseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="houseName != null">
+        houseName = #{houseName,jdbcType=VARCHAR},
+      </if>
+      <if test="hostStatus != null">
+        hostStatus = #{hostStatus,jdbcType=INTEGER},
+      </if>
+      <if test="hostModel != null">
+        hostModel = #{hostModel,jdbcType=VARCHAR},
+      </if>
+      <if test="simCode != null">
+        simCode = #{simCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        createdTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.datamacy.common.admin.entity.HostEntity">
+    update cz_host
+    set hostCode = #{hostCode,jdbcType=VARCHAR},
+      hostName = #{hostName,jdbcType=VARCHAR},
+      houseId = #{houseId,jdbcType=VARCHAR},
+      houseCode = #{houseCode,jdbcType=VARCHAR},
+      houseName = #{houseName,jdbcType=VARCHAR},
+      hostStatus = #{hostStatus,jdbcType=INTEGER},
+      hostModel = #{hostModel,jdbcType=VARCHAR},
+      simCode = #{simCode,jdbcType=VARCHAR},
+      createdTime = #{createdTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectForPage" parameterType="java.lang.String" resultType ="com.datamacy.common.admin.entity.HostEntity">
+    select
+    <include refid="Base_Column_List" />
+    from cz_host
+    limit ${start},${pageSize}
+  </select>
+</mapper>

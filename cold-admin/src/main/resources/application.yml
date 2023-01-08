@@ -1,0 +1,42 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    connection-timeout: 10000ms
+    threads:
+      max: 1000
+      min-spare: 10
+  port: 8181
+  servlet:
+    context-path: /cold
+spring:
+  application:
+    name: cold-admin
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  # 环境 dev|test|prod
+  profiles:
+    active: dev
+  # jackson时间格式化
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  typeAliasesPackage: com.datamacy.common.admin.entity.*
+  #原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+logging:
+  level:
+    #日志打印服务心跳，INFO控制台打印get changedGroupKeys:[]，WARN不打印
+    com.alibaba.nacos.client.config.impl: WARN

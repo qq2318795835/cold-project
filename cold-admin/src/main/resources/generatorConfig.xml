@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="default" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.LombokPlugin" > <property name="hasLombok" value="true"/> </plugin>
+        <plugin type="org.mybatis.generator.plugins.OverIsMergeablePlugin" />
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 这个元素用来去除指定生成的注释中是否包含生成的日期 false:表示保护 -->
+            <!-- 如果生成日期，会造成即使修改一个字段，整个实体类所有属性都会发生变化，不利于版本控制，所以设置为true -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/cold-admin?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置-->
+        <javaModelGenerator targetPackage="com.datamacy.common.admin.entity" targetProject="D:\Learn\AWorkSpace\cold-project\cold-common\src\main\java">
+            <!-- 是否允许子包 -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否对modal添加构造函数 -->
+            <property name="constructorBased" value="false"/>
+            <!-- 是否清理从数据库中查询出的字符串左右两边的空白字符 -->
+            <property name="trimStrings" value="true"/>
+            <!-- 建立modal对象是否不可改变 即生成的modal对象不会有setter方法，只有构造方法 -->
+            <property name="immutable" value="false"/>
+
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置 ***mapper.xml-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src\main\resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置 ***mapper.java-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.datamacy.coldadmin.dao" targetProject="D:\Learn\AWorkSpace\cold-project\cold-admin\src\main\java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <!-- 所有要生成的表名 -->
+<!--        <table tableName="cz_company" domainObjectName="CompanyEntity"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <columnOverride column="id" property="id" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="company" property="company" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="abbreviation" property="abbreviation" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="companyNumber" property="companyNumber" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="companyAddress" property="companyAddress" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="companyPhone" property="companyPhone" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="managementName" property="managementName" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="managementPhone" property="managementPhone" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="leader" property="leader" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="leaderPhone" property="leaderPhone" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="message" property="message" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="webAddress" property="webAddress" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="companyType" property="companyType" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="createdTime" property="createdTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />-->
+<!--            <columnOverride column="updateTime" property="updateTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />-->
+<!--        </table>-->
+<!--        <table tableName="cz_host" domainObjectName="HostEntity"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <columnOverride column="id" property="id" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="hostCode" property="hostCode" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="hostName" property="hostName" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="houseId" property="houseId" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="houseCode" property="houseCode" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="houseName" property="houseName" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="hostStatus" property="hostStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+<!--            <columnOverride column="hostModel" property="hostModel" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="simCode" property="simCode" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="createdTime" property="createdTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />-->
+<!--            <columnOverride column="updateTime" property="updateTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />-->
+<!--        </table>-->
+<!--        <table tableName="cz_meter" domainObjectName="MeterEntity"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <columnOverride column="id" property="id" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="meterCode" property="meterCode" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="meterName" property="meterName" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="hostId" property="hostId" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="hostCode" property="hostCode" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="hostName" property="hostName" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="houseId" property="houseId" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="houseCode" property="houseCode" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="houseName" property="houseName" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="companyId" property="companyId" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="companyName" property="companyName" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="meterStatus" property="meterStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+<!--            <columnOverride column="maxTem" property="maxTem" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+<!--            <columnOverride column="minTem" property="minTem" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+<!--            <columnOverride column="maxHum" property="maxHum" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+<!--            <columnOverride column="minHum" property="minHum" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+<!--            <columnOverride column="meterInterval" property="meterInterval" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+<!--            <columnOverride column="remarks" property="remarks" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="createdTime" property="createdTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />-->
+<!--            <columnOverride column="updateTime" property="updateTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />-->
+<!--        </table>-->
+<!--        <table tableName="cz_monitor" domainObjectName="MonitorEntity"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <columnOverride column="id" property="id" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="userName" property="userName" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="userPhone" property="userPhone" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="monitorState" property="monitorState" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="hostId" property="hostId" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="hostCode" property="hostCode" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="hostName" property="hostName" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+<!--            <columnOverride column="createdTime" property="createdTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />-->
+<!--            <columnOverride column="updateTime" property="updateTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />-->
+<!--        </table>-->
+        <table tableName="cz_warehouse" domainObjectName="WarehouseEntity"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <columnOverride column="id" property="id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="houseCode" property="houseCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="houseName" property="houseName" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="houseAddress" property="houseAddress" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="houseType" property="houseType" javaType="java.lang.Integer" jdbcType="INTEGER  " />
+            <columnOverride column="companyId" property="companyId" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="companyName" property="companyName" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="principalName" property="principalName" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="principalTel" property="principalTel" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="longitude" property="longitude" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+            <columnOverride column="latitude" property="latitude" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+            <columnOverride column="areaSize" property="areaSize" javaType="java.lang.Double" jdbcType="DOUBLE" />
+            <columnOverride column="houseStatus" property="houseStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <columnOverride column="createdTime" property="createdTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />
+            <columnOverride column="updateTime" property="updateTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />
+        </table>
+    </context>
+
+</generatorConfiguration>

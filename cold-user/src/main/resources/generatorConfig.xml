@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="default" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.LombokPlugin" > <property name="hasLombok" value="true"/> </plugin>
+        <plugin type="org.mybatis.generator.plugins.OverIsMergeablePlugin" />
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 这个元素用来去除指定生成的注释中是否包含生成的日期 false:表示保护 -->
+            <!-- 如果生成日期，会造成即使修改一个字段，整个实体类所有属性都会发生变化，不利于版本控制，所以设置为true -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/cold-user?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置-->
+        <javaModelGenerator targetPackage="com.datamacy.common.user.entity" targetProject="D:\Learn\AWorkSpace\cold_project\cold-project\cold-common\src\main\java">
+            <!-- 是否允许子包 -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否对modal添加构造函数 -->
+            <property name="constructorBased" value="false"/>
+            <!-- 是否清理从数据库中查询出的字符串左右两边的空白字符 -->
+            <property name="trimStrings" value="true"/>
+            <!-- 建立modal对象是否不可改变 即生成的modal对象不会有setter方法，只有构造方法 -->
+            <property name="immutable" value="false"/>
+
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置 ***mapper.xml-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src\main\resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置 ***mapper.java-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.datamacy.colduser.dao" targetProject="D:\Learn\AWorkSpace\cold_project\cold-project\cold-user\src\main\java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <!-- 所有要生成的表名 -->
+        <table tableName="sys_user" domainObjectName="SysUserEntity"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <columnOverride column="user_id" property="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+            <columnOverride column="username" property="username" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="password" property="password" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="salt" property="salt" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="email" property="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="mobile" property="mobile" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="status" property="status" javaType="java.lang.Integer" jdbcType="TINYINT" />
+            <columnOverride column="create_user_id" property="create_user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+            <columnOverride column="create_time" property="create_time" javaType="java.util.Date" jdbcType="DATE" />
+        </table>
+<!--        <table tableName="sys_user_token" domainObjectName="SysUserTokenEntity"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <columnOverride column="user_id" property="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />-->
+<!--            <columnOverride column="token" property="token" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--            <columnOverride column="expire_time" property="expire_time" javaType="java.util.Date" jdbcType="DATE" />-->
+<!--            <columnOverride column="update_time" property="update_time" javaType="java.sql.Date" jdbcType="DATE" />-->
+<!--        </table>-->
+
+    </context>
+
+</generatorConfiguration>

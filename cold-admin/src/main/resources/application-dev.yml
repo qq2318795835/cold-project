@@ -1,0 +1,56 @@
+spring:
+    redis:
+        open: true  # 是否开启redis缓存  true开启   false关闭
+        database: 0
+        host: localhost
+        port: 6379
+        #password: 12345678 # 密码（默认为空）
+        timeout: 6000ms  # 连接超时时长（毫秒）
+        jedis:
+          pool:
+              max-active: 1000
+              max-wait: -1ms
+              max-idle: 10
+              min-idle: 5
+    datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      druid:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/cold-admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+          username: root
+          password: 123456
+          filters: stat,wall # 配置监控防火墙
+
+          initial-size: 10
+          max-active: 100
+          min-idle: 10
+          max-wait: 60000
+          pool-prepared-statements: false
+          max-pool-prepared-statement-per-connection-size: 20
+          time-between-eviction-runs-millis: 60000
+          min-evictable-idle-time-millis: 300000
+          test-while-idle: true
+          test-on-borrow: false
+          test-on-return: false
+          stat-view-servlet:
+              enabled: true
+              login-username: admin
+              login-password: admin
+              resetEnable: false
+              #allow: 127.0.0.1,localhost
+              # IP 黑名单，若白名单也存在，则优先使用
+              #deny:
+          web-stat-filter: # 监控web应用，开启web监控功能
+              enabled: true
+              urlPattern: /*
+              exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+          filter:
+              stat:
+                  enabled: true
+                  log-slow-sql: true
+                  slow-sql-millis: 1000
+                  merge-sql: false
+              wall:
+                  enabled: true
+                  config:
+                      multi-statement-allow: true
